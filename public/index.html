@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>القرآن الكريم — Learn Quran</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400&family=Lateef:wght@300;400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Background decorative elements -->
+  <div class="bg-pattern"></div>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-arabic">القرآن</span>
+        <span class="logo-sep">|</span>
+        <span class="logo-en">Learn Quran</span>
+      </div>
+      <div class="header-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    </div>
+  </header>
+
+  <!-- Main App -->
+  <main class="main">
+
+    <!-- Surah Selection Screen -->
+    <section class="screen" id="screen-select">
+      <div class="select-container">
+        <h1 class="select-title">
+          <span class="title-line-1">اختر السورة</span>
+          <span class="title-line-2">Select a Surah</span>
+        </h1>
+        <p class="select-subtitle">Choose a Surah to begin reading with Urdu &amp; English translations</p>
+
+        <div class="search-wrap">
+          <input type="text" id="surah-search" placeholder="Search surah by name..." class="search-input" />
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+
+        <div class="surah-grid" id="surah-grid">
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Loading Surahs...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reading Screen -->
+    <section class="screen hidden" id="screen-read">
+      <div class="reader-container">
+
+        <!-- Reader Header -->
+        <div class="reader-header">
+          <button class="btn-back" id="btn-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            Back
+          </button>
+          <div class="reader-surah-info">
+            <span class="reader-surah-name" id="reader-surah-name">Al-Fatiha</span>
+            <span class="reader-surah-arabic" id="reader-surah-arabic">الفاتحة</span>
+          </div>
+          <div class="reader-progress-info">
+            <span id="ayat-counter">1 / 7</span>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <!-- Ayat Card -->
+        <div class="ayat-card" id="ayat-card">
+          <div class="ayat-loading hidden" id="ayat-loading">
+            <div class="spinner"></div>
+          </div>
+
+          <div class="ayat-content" id="ayat-content">
+            <!-- Ayat number badge -->
+            <div class="ayat-badge">
+              <span class="ayat-num-ar" id="ayat-num-ar">١</span>
+              <span class="ayat-num-label">Ayat</span>
+              <span class="ayat-num" id="ayat-num">1</span>
+            </div>
+
+            <!-- Arabic text -->
+            <div class="arabic-section">
+              <p class="arabic-text" id="arabic-text">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+            </div>
+
+            <!-- Divider -->
+            <div class="translation-divider">
+              <span class="divider-ornament">✦</span>
+            </div>
+
+            <!-- Urdu Translation -->
+            <div class="urdu-section">
+              <span class="trans-label urdu-label">اردو ترجمہ</span>
+              <p class="urdu-text" id="urdu-text">تمام تعریفیں اللہ کے لیے ہیں جو تمام جہانوں کا رب ہے</p>
+            </div>
+
+            <!-- English Translation -->
+            <div class="english-section">
+              <span class="trans-label eng-label">English Translation</span>
+              <p class="english-text" id="english-text">In the name of Allah, the Entirely Merciful, the Especially Merciful.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="nav-controls">
+          <button class="btn-nav btn-prev" id="btn-prev" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            <span>Previous</span>
+          </button>
+
+          <div class="nav-dots" id="nav-dots"></div>
+
+          <button class="btn-nav btn-next" id="btn-next">
+            <span>Next</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
+        <!-- Surah Complete -->
+        <div class="surah-complete hidden" id="surah-complete">
+          <div class="complete-content">
+            <div class="complete-icon">🌙</div>
+            <h3>Surah Complete</h3>
+            <p>You have completed reading this Surah</p>
+            <div class="complete-actions">
+              <button class="btn-restart" id="btn-restart">Read Again</button>
+              <button class="btn-select-another" id="btn-select-another">Select Another Surah</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

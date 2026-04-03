@@ -1,0 +1,20 @@
+{
+  "name": "learnquran",
+  "version": "1.0.0",
+  "description": "A beautiful web application to read the Holy Quran with **Urdu** and **English** translations, featuring a clean ayat-by-ayat reading experience.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.14.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.0",
+    "express": "^5.2.1",
+    "mongoose": "^9.3.3"
+  }
+}
